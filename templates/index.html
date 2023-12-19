@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pawnshop</title>
+  </head>
+
+  <body>
+    <h1>Available Goods</h1>
+    <ul>
+      {% for name, price in goods.items() %}
+      <li>{{ name }}: {{ price }}</li>
+      {% endfor %}
+    </ul>
+    <h2>Add Good</h2>
+    <form action="{{ url_for('add_good') }}" method="post">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" required />
+      <label for="price">Price:</label>
+      <input type="number" name="price" id="price" required />
+      <input type="submit" value="Add" />
+    </form>
+    <h2>Remove Good</h2>
+    <form action="{{ url_for('remove_good') }}" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+      <button type="submit">Remove</button>
+    </form>
+
+    <h2>Goods Amount</h2>
+    <p>{{ get_goods_amount() }}</p>
+    <h2>Total Cost</h2>
+    <p>{{ get_total_cost() }}</p>
+  </body>
+</html>
