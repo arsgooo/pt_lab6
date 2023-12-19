@@ -41,3 +41,7 @@ jobs:
         python3 -m unittest pawnshop_tests.py
       env:
         CI: true 
+    - name: Debug
+      run: |
+        ls -l
+        cat pawnshop_tests.py
